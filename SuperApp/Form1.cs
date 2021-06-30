@@ -22,7 +22,8 @@ namespace SuperApp
 
         private void button1_Click(object sender, EventArgs e)
         {
-            panel1.BackColor = colors[(++color_iter) % colors.Length];
+            this.panel1.BackColor = colors[(++color_iter) % colors.Length];
+            this.label1.Text = colors[(color_iter) % colors.Length].Name.ToString();
         }
         private Color[] colors;
         private short color_iter;
