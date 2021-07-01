@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.IO;
 using System.Windows.Forms;
+
 
 namespace SuperApp
 {
@@ -15,6 +9,17 @@ namespace SuperApp
         public ManagerForm()
         {
             InitializeComponent();
+        }
+        public ManagerForm(int interval_now) : this()
+        {
+            this.trackBar1.Value = interval_now;
+            this.label2.Text = this.trackBar1.Value.ToString();
+          
+        }
+
+        private void ManagerForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            File.WriteAllText("interval.config", this.trackBar1.Value.ToString());
         }
     }
 }
